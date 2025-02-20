@@ -6,6 +6,8 @@ import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BookService {
 
@@ -21,6 +23,12 @@ public class BookService {
         Book foundBook = bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not Found"));
         return foundBook;
     };
+
+    public List<Book> findAll(){
+        return bookRepository.findAll();
+    }
+
+
 
     public Book update(Long id, Book book){
         Book updatedbook = bookRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Not found"));

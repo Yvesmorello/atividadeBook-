@@ -8,6 +8,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RequestMapping("/book")
 @RestController
@@ -20,6 +21,11 @@ public class BookController {
     public ResponseEntity<Book> createBook(@RequestBody @Valid Book book){
       Book createdbook = service.create(book);
       return ResponseEntity.ok(createdbook);
+    };
+
+    @GetMapping()
+    public List<Book> findAll(){
+        return service.findAll();
     };
 
     @GetMapping("/{id}")
